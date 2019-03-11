@@ -1,0 +1,80 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/pigbreed?useSSL=false&useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=PRC&autoReconnect=true
+    username: root
+    password:
+    initialSize: 10
+    minIdle: 10
+    maxActive: 100
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 200   #PreparedStatement缓存大小
+    filters: stat,wall          #stat:web监控   wall：sql防火墙
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    useGlobalDataSourceStat: true
+    loginUsername: root    #druid控制页面登陆用户名
+    loginPassword: zv9VJPPkSS8QYl1WJTTjIhxl     #druid控制页面登陆密码
+    test-while-idle: true  #申请连接的时候检测，如果空闲时间大于 timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    mode: HTML5
+    check-template: true
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 30
+        max-wait: -1
+        max-idle: 30
+        min-idle: 2
+    timeout: 1000
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources,classpath:/static/,classpath:/public/
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 8080
+  servlet:
+    context-path: /pigbreed
+weixin:
+  appID: wxadd0698c7310157b
+  appsecret: 2f3c1d010a51d1dc937cb82a9ac105d7
+  url:
+    picture_download: https://api.weixin.qq.com/cgi-bin/media/get #微信js开发获得本地已上传图片接口url
+    jsapi_ticket: https://api.weixin.qq.com/cgi-bin/ticket/getticket
+    baseurl: https://wx.idsbllp.cn #微信验证重定向返回url
+project:
+  url: http://47.106.222.221
+  name: cetsearch
+
+
+
+
+
+
+
+
