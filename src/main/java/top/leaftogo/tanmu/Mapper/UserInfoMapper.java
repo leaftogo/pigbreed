@@ -7,7 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface UserInfoMapper {
-    @Insert("insert into user_info (openid,username,user_pic_url,description,like_amount) values (#{openid},#{username},#{user_pic_url},#{description},#{like_amount})")
+    @Insert("insert into user_info (openid,username,user_pic_url,description,like_amount,money) values (#{openid},#{username},#{user_pic_url},#{description},#{like_amount},#{money})")
     @Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "id")
     void add(UserInfoEntity entity);
 
